@@ -308,4 +308,49 @@ a:focus-visible,button:focus-visible{outline:2px solid #fff;outline-offset:4px}
     .social{grid-area:8 / 4}
   }
 }
+/* One opening sequence. The photograph is the fixed stage; only foreground
+   groups enter. Backwards fill hides each group before its cue, then the
+   authored styles take over when the animation and opt-in class end. */
+@media (prefers-reduced-motion:no-preference){
+  html.intro-pending .brand{animation:intro-soft .54s cubic-bezier(.22,1,.36,1) .06s backwards}
+  @media (min-width:1000px) and (min-height:640px) and (min-aspect-ratio:11/10){
+    html.intro-pending .nav{animation:intro-soft .52s cubic-bezier(.22,1,.36,1) .16s backwards}
+    html.intro-pending .btn-top{animation:intro-soft .54s cubic-bezier(.22,1,.36,1) .48s backwards}
+  }
+  @media not all and (min-width:1000px) and (min-height:640px) and (min-aspect-ratio:11/10){
+    html.intro-pending .burger{animation:intro-soft .52s cubic-bezier(.22,1,.36,1) .16s backwards}
+  }
+  html.intro-pending .tag{animation:intro-soft .48s cubic-bezier(.22,1,.36,1) .24s backwards}
+  html.intro-pending .intro h1 .l1{animation:intro-type .82s cubic-bezier(.19,1,.22,1) .34s backwards}
+  html.intro-pending .intro h1 .l2{animation:intro-type .82s cubic-bezier(.19,1,.22,1) .48s backwards}
+  html.intro-pending .intro h1 .l3{animation:intro-type .86s cubic-bezier(.19,1,.22,1) .62s backwards}
+  html.intro-pending .rule{animation:intro-rule .52s cubic-bezier(.22,1,.36,1) .86s backwards}
+  html.intro-pending .lead{animation:intro-copy .6s cubic-bezier(.22,1,.36,1) .94s backwards}
+  html.intro-pending .btn-cta{animation:intro-soft .62s cubic-bezier(.22,1,.36,1) 1.14s backwards}
+  html.intro-pending .facts{animation:intro-copy .62s cubic-bezier(.22,1,.36,1) 1.10s backwards}
+  html.intro-pending .name{animation:intro-lockup .86s cubic-bezier(.22,1,.36,1) 1.22s backwards}
+  html.intro-pending .roles{animation:intro-soft .5s cubic-bezier(.22,1,.36,1) 1.72s backwards}
+  html.intro-pending .social{animation:intro-soft .5s cubic-bezier(.22,1,.36,1) 1.76s backwards}
+  @keyframes intro-soft{
+    from{opacity:0;transform:translate3d(0,6px,0)}
+    to{opacity:1;transform:none}
+  }
+  @keyframes intro-type{
+    from{opacity:0;clip-path:inset(0 0 100% 0);transform:translate3d(0,.16em,0)}
+    to{opacity:1;clip-path:inset(0 0 0 0);transform:none}
+  }
+  @keyframes intro-rule{
+    from{opacity:0;transform:scaleX(0)}
+    to{opacity:1;transform:none}
+  }
+  @keyframes intro-copy{
+    from{opacity:0;transform:translate3d(0,4px,0)}
+    to{opacity:1;transform:none}
+  }
+  @keyframes intro-lockup{
+    from{opacity:0}
+    to{opacity:1}
+  }
+  .intro-pending .rule{transform-origin:left center}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
